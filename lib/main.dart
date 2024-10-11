@@ -40,7 +40,7 @@ class _WebViewContainerState extends State<WebViewContainer> {
       ),
       body: WebView(
         initialUrl: 'https://salamat724.com',
-        javascriptMode: JavascriptMode.unrestricted,  // Corrected JavascriptMode usage
+        javascriptMode: JavascriptMode.unrestricted,
         onWebViewCreated: (controller) {
           _controller = controller;
         },
