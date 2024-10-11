@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'dart:io';  // For checking the platform
 
 void main() {
   runApp(MyApp());
@@ -20,12 +21,14 @@ class WebViewContainer extends StatefulWidget {
 }
 
 class _WebViewContainerState extends State<WebViewContainer> {
+  late WebViewController _controller;
+
   @override
   void initState() {
     super.initState();
-    // Ensure that WebView is initialized on iOS
-    if (WebView.platform == SurfaceAndroidWebView()) {
-      WebView.platform = SurfaceAndroidWebView();
+    // Initialize the platform for WebView
+    if (Platform.isAndroid) {
+      WebView.platform = SurfaceAndroidWebView();  // Correct platform initialization
     }
   }
 
@@ -37,7 +40,10 @@ class _WebViewContainerState extends State<WebViewContainer> {
       ),
       body: WebView(
         initialUrl: 'https://salamat724.com',
-        javascriptMode: JavascriptMode.unrestricted,
+        javascriptMode: JavascriptMode.unrestricted,  // Corrected JavascriptMode usage
+        onWebViewCreated: (controller) {
+          _controller = controller;
+        },
       ),
     );
   }
