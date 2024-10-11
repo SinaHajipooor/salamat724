@@ -5,6 +5,6 @@
 import FlutterMacOS
 import Foundation
 
+import webview_flutter_wkwebview
 
-func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
-}
+func RegisterGeneratedPlugins(regi
